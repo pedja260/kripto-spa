@@ -56,14 +56,17 @@ export default {
   },
   methods: {
     destroy(id) {
+      this.$confirm("Are you sure?").then(() => {
+        axios.delete('price_alerts/' + id)
+            .then( response => {
 
-      axios.delete('price_alerts/' + id)
-          .then( response => {
-            
-            this.$router.push('/price_alert_list');
+              this.$router.push('/');
 
-          });
-    }
+            });
+      });
+
+
+    },
   },
 }
 </script>

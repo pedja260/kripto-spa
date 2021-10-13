@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueSweetalert2 from 'vue-sweetalert2';
+import VueSimpleAlert from "vue-simple-alert";
 import config from "../config";
 import './plugins/bootstrap-vue'
 import App from './App.vue'
@@ -8,7 +8,7 @@ import store from './store'
 import axios from "axios";
 
 
-Vue.use(VueSweetalert2);
+Vue.use(VueSimpleAlert);
 
 Vue.config.productionTip = false
 

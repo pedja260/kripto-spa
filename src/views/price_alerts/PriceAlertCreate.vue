@@ -77,7 +77,7 @@ export default {
 
       axios.post('price_alerts', fields)
       .then( response => {
-
+        this.$alert("Price alert is created success.");
         this.$router.push('/price_alert_list');
         // this.$swal('Price alert is created successfuly!');
         this.form_submiting = false;
