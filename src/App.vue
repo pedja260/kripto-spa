@@ -8,7 +8,8 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="/">List currencies</b-nav-item>
+<!--            <b-nav-item href="/">List currencies</b-nav-item>-->
+            <router-link :to="{ name: 'Home' }" class="nav-link">Home</router-link>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->

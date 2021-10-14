@@ -4,30 +4,29 @@
     <table class="table">
       <thead>
       <tr>
-        <th>Id</th>
-        <th>Name</th>
-
-        <th>symbol</th>
-
+        <th>Coin</th>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>1H</th>
+        <th>24h</th>
+        <th>Market Cap</th>
         <th>Action</th>
       </tr>
       </thead>
       <tbody class="text-left">
       <tr v-for="list in coin_lists">
-        <th>{{ list.id }}</th>
+
         <td>
-          <router-link to="data.path">
+            <img :src="list.image" style="width:30px;" alt="" />
             {{ list.name }}
-          </router-link>
-
         </td>
-
         <td>{{ list.symbol }}</td>
 
-        <td>
-<!--          <router-link class="btn btn-info btn-sm" :to="{ name: 'alert.edit', params: { id: alert.id } }">Edit</router-link>-->
-<!--          <button @click="destroy(alert.id)" class="btn btn-danger btn-sm">Delete</button>-->
-        </td>
+        <td>Eur {{ list.current_price }}</td>
+        <td>{{ list.ath_change_percentage }}%</td>
+        <td>{{ list.high_24h }}%</td>
+        <td>{{ list.market_cap }}</td>
+        <td><router-link :to="{ name: 'coinshow', params: { id: list.id }} ">Show coin</router-link></td>
       </tr>
 
       </tbody>
@@ -51,26 +50,24 @@ export default {
     }
   },
   created() {
-    axios.get ('https://api.coingecko.com/api/v3/coins/list?include_platform=true')
-    .then(res =>this.coin_lists = res.data)
-    .catch(err => console.log(err));
+    axios.get ('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=price_change_percentage')
+      .then(res =>this.coin_lists = res.data)
+      .catch(error => console.log(error.response.data))
   },
   mounted() {
     axios.get('posts' )
-        .then(response => this.posts = response.data.data )
-    .catch(error => console.log(error.response.data))
+      .then(response => this.posts = response.data.data )
+      .catch(error => console.log(error.response.data))
   }
 }
 </script>
 <style>
 th {
   text-align: left;
-
 }
 
 td {
   text-align: left;
-
 }
 
 th a{

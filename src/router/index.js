@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import CoinShow from '../views/CoinShow'
+import About from '../views/About.vue'
 import Admin from "../views/admin/Admin";
-import About from "../views/About";
+
 import Login from "../views/auth/Login";
 import Register from "../views/auth/Register";
 import PriceAlertList from "../views/price_alerts/PriceAlertList";
 import PriceAlertCreate from "../views/price_alerts/PriceAlertCreate";
 import PriceAlertEdit from "../views/price_alerts/PriceAlertEdit";
+
+
 
 Vue.use(VueRouter)
 
@@ -16,6 +20,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/show/:id',
+    name: 'coinshow',
+    component: CoinShow,
   },
   {
     path: '/price_alert_list',
